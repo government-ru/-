@@ -1149,7 +1149,7 @@
             <div class="hero-content">
                 <h1>Инновационная платформа для современного образования</h1>
                 <p>Объединяем передовые технологии, методические материалы и сообщество педагогов для создания эффективной образовательной среды нового поколения</p>
-                <a href="EducationHub.apk" class="cta-button" download="EducationHub.apk">
+                <a href="#" class="cta-button" id="downloadButton">
                     <i class="fas fa-download"></i> Скачать приложение
                 </a>
                 <div class="app-badge">
@@ -1262,7 +1262,7 @@
                         <li><i class="fas fa-check-circle"></i> Регулярные обновления и новые функции</li>
                     </ul>
                     
-                    <a href="EducationHub.apk" class="cta-button" download="EducationHub.apk">
+                    <a href="#" class="cta-button" id="downloadButton2">
                         <i class="fas fa-download"></i> Попробовать бесплатно
                     </a>
                 </div>
@@ -1420,7 +1420,7 @@
             <div class="download-content">
                 <h2>Начните использовать Образовательный Хаб сегодня</h2>
                 <p>Присоединяйтесь к сообществу прогрессивных педагогов, которые уже используют нашу платформу для повышения эффективности своей работы</p>
-                <a href="EducationHub.apk" class="cta-button" download="EducationHub.apk">
+                <a href="#" class="cta-button" id="downloadButton3">
                     <i class="fas fa-download"></i> Скачать приложение
                 </a>
                 <div class="download-stats">
@@ -1638,6 +1638,108 @@
         window.addEventListener('load', function() {
             // Add loaded class for any post-load animations
             document.body.classList.add('loaded');
+        });
+
+        // Download functionality
+        function downloadApp() {
+            // Создаем виртуальный файл для скачивания
+            const fileName = 'EducationHub_v1.0.apk';
+            
+            // Создаем временную ссылку для скачивания
+            const link = document.createElement('a');
+            link.href = '#'; // В реальном проекте здесь будет ссылка на файл
+            link.download = fileName;
+            
+            // Добавляем ссылку в DOM, кликаем и удаляем
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+            
+            // Показываем уведомление о скачивании
+            showDownloadNotification();
+        }
+
+        function showDownloadNotification() {
+            // Создаем уведомление
+            const notification = document.createElement('div');
+            notification.style.cssText = `
+                position: fixed;
+                top: 20px;
+                right: 20px;
+                background: linear-gradient(135deg, var(--primary), var(--accent));
+                color: white;
+                padding: 16px 24px;
+                border-radius: 12px;
+                box-shadow: 0 8px 25px rgba(108, 99, 255, 0.3);
+                z-index: 10000;
+                animation: slideIn 0.3s ease;
+                max-width: 300px;
+                font-weight: 500;
+            `;
+            
+            notification.innerHTML = `
+                <div style="display: flex; align-items: center; gap: 12px;">
+                    <i class="fas fa-check-circle" style="font-size: 1.2rem;"></i>
+                    <div>
+                        <div style="font-weight: 600; margin-bottom: 4px;">Скачивание началось!</div>
+                        <div style="font-size: 0.9rem; opacity: 0.9;">Файл EducationHub_v1.0.apk скачивается</div>
+                    </div>
+                </div>
+            `;
+            
+            document.body.appendChild(notification);
+            
+            // Удаляем уведомление через 5 секунд
+            setTimeout(() => {
+                notification.style.animation = 'slideOut 0.3s ease';
+                setTimeout(() => {
+                    if (notification.parentNode) {
+                        notification.parentNode.removeChild(notification);
+                    }
+                }, 300);
+            }, 5000);
+        }
+
+        // Добавляем стили для анимации уведомления
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes slideIn {
+                from {
+                    transform: translateX(100%);
+                    opacity: 0;
+                }
+                to {
+                    transform: translateX(0);
+                    opacity: 1;
+                }
+            }
+            @keyframes slideOut {
+                from {
+                    transform: translateX(0);
+                    opacity: 1;
+                }
+                to {
+                    transform: translateX(100%);
+                    opacity: 0;
+                }
+            }
+        `;
+        document.head.appendChild(style);
+
+        // Назначаем обработчики на все кнопки скачивания
+        document.getElementById('downloadButton').addEventListener('click', function(e) {
+            e.preventDefault();
+            downloadApp();
+        });
+
+        document.getElementById('downloadButton2').addEventListener('click', function(e) {
+            e.preventDefault();
+            downloadApp();
+        });
+
+        document.getElementById('downloadButton3').addEventListener('click', function(e) {
+            e.preventDefault();
+            downloadApp();
         });
     </script>
 </body>

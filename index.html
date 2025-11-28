@@ -1149,8 +1149,7 @@
             <div class="hero-content">
                 <h1>Инновационная платформа для современного образования</h1>
                 <p>Объединяем передовые технологии, методические материалы и сообщество педагогов для создания эффективной образовательной среды нового поколения</p>
-                <!-- ИСПРАВЛЕННАЯ ССЫЛКА -->
-                <a href="EducationHub_v1.0.apk" download="EducationHub_v1.0.apk" class="cta-button">
+                <a href="EduCationHub_v1.0.apk" download="EduCationHub_v1.0.apk" class="cta-button">
                     <i class="fas fa-download"></i> Скачать приложение
                 </a>
                 <div class="app-badge">
@@ -1263,8 +1262,7 @@
                         <li><i class="fas fa-check-circle"></i> Регулярные обновления и новые функции</li>
                     </ul>
                     
-                    <!-- ИСПРАВЛЕННАЯ ССЫЛКА -->
-                    <a href="app-release.apk" download="EducationHub_v1.0.apk" class="cta-button">
+                    <a href="EduCationHub_v1.0.apk" download="EduCationHub_v1.0.apk" class="cta-button">
                         <i class="fas fa-download"></i> Попробовать бесплатно
                     </a>
                 </div>
@@ -1422,8 +1420,7 @@
             <div class="download-content">
                 <h2>Начните использовать Образовательный Хаб сегодня</h2>
                 <p>Присоединяйтесь к сообществу прогрессивных педагогов, которые уже используют нашу платформу для повышения эффективности своей работы</p>
-                <!-- ИСПРАВЛЕННАЯ ССЫЛКА -->
-                <a href="EducationHub_v1.0.apk" download="EducationHub_v1.0.apk" class="cta-button">
+                <a href="EduCationHub_v1.0.apk" download="EduCationHub_v1.0.apk" class="cta-button">
                     <i class="fas fa-download"></i> Скачать приложение
                 </a>
                 <div class="download-stats">
@@ -1667,7 +1664,7 @@
                     <i class="fas fa-check-circle" style="font-size: 1.2rem;"></i>
                     <div>
                         <div style="font-weight: 600; margin-bottom: 4px;">Скачивание началось!</div>
-                        <div style="font-size: 0.9rem; opacity: 0.9;">Файл EducationHub_v1.0.apk скачивается</div>
+                        <div style="font-size: 0.9rem; opacity: 0.9;">Файл EduCationHub_v1.0.apk скачивается</div>
                     </div>
                 </div>
             `;
@@ -1717,6 +1714,24 @@
                 showDownloadNotification();
             });
         });
+
+        // Проверка доступности файла
+        function checkFileAvailability() {
+            fetch('EduCationHub_v1.0.apk')
+                .then(response => {
+                    if (response.ok) {
+                        console.log('APK файл доступен для скачивания');
+                    } else {
+                        console.log('APK файл не найден');
+                    }
+                })
+                .catch(error => {
+                    console.log('Ошибка при проверке файла:', error);
+                });
+        }
+
+        // Вызовите при загрузке страницы
+        document.addEventListener('DOMContentLoaded', checkFileAvailability);
     </script>
 </body>
 </html>
